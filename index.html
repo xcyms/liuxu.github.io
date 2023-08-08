@@ -1,159 +1,227 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>相册</title>
-		<meta charset="utf-8">
-		<style type='text/css'>
-			*{ margin:0; padding:0;}
-			body{
-				background:#000;
-				overflow:hidden;
-			}
-			#perspective{
-				perspective:800px;
-			}
-			#wrap{
-				width:120px;  /*133:200  4:6  */
-				height:180px;
-				margin:0 auto;
-				position:relative;
+<!DOCTYPE html><!-- 
+开发设计人员：刘全勇
+类型：原创 
+说明：bootstrap响应式，设置了50种不同的渐变色背景可供调用。
+--><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创意工具</title>
+    <!-- 引入框架 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="js/jquery.min.js">
+    <link rel="stylesheet" href="js/bootstrap.min.js">
+    <!-- 引入tool中的icon -->
+    <link rel="stylesheet" href="tool/font/iconfont.css">
+    <!-- 引入常规样式 -->
+    <link rel="stylesheet" href="css/tool.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <!-- 引入背景色 -->
+    <link rel="stylesheet" href="css/li-bgc-color.css">
+</head>
 
-				/*搭建3D效果必须的两个属性：一个变换风格变3d，一个场景景深800px*/
-				transform-style:preserve-3d;
-				transform:rotateX(-10deg) rotateY(0deg);
-				
-			}
-			#wrap img{
-				width:100%;
-				height:100%;
-				position:absolute;
-				border-radius:1px;
-				
-				transform:rotateY(0deg) translateZ(0px);
-				/*倒影：朝向 偏移 遮盖*//*线性渐变(从哪里开始,开始时候的颜色,结束时候的颜色)*/
-				-webkit-box-reflect:below 5px -webkit-linear-gradient(top,rgba(0,0,0,0) 40%,rgba(0,0,0,0.5) 100%);
-			}
-			#wrap p{
-				width:1200px;
-				height:1200px;
-				background:-webkit-radial-gradient(center center,600px 600px,rgba(244,23,234,0.2),rgba(0,0,0,0));
-				border-radius:100%;
-				position:absolute;
-				left:50%;
-				top:102%;
-				margin-left:-600px;
-				margin-top:-600px;
-				transform:rotateX(90deg);
-			}
-		</style>
-	</head>
-	<body>
-		<p style="background-color: white;"><a href="https://beian.miit.gov.cn/" style="margin-left: 49rem;" target="_blank">蒙ICP备20000077号-1</a>.</p>
-		<div id="perspective">
-			<div id='wrap'>
-				<img src="img/1.png" />
-				<img src="img/2.png" />
-				<img src="img/3.png" />
-				<img src="img/4.jpeg" />
-				<img src="img/5.jpeg" />
-				<img src="img/6.jpeg" />
-				<img src="img/7.jpeg" />
-				<img src="img/1.png" />
-				<img src="img/2.png" />
-				<img src="img/3.png" />
-				<img src="img/4.jpeg" />
-				<img src="img/5.jpeg" />
-				<img src="img/6.jpeg" />
-				<p></p>
-			</div>
-		</div>
+<body>
+    <!-- 顶部内容 -->
+    <div class="container">
+        <h2 class="page-header">
+            <div class="row">
+                <div class="col-xs-3">Tools</div>
+                <div class="col-xs-4 text-right pull-right"><a href="#">首页</a></div>
+            </div>
+        </h2>
+    </div>
 
-		<script type="text/javascript">
-			window.onload = function(){
-				var oWrap = document.getElementById('wrap');
-				var oImg = oWrap.getElementsByTagName('img');
-				var oImgLength = oImg.length;
-				var Deg = 360 / oImgLength;
-				var nowX , nowY , lastX , lastY , minusX = 0, minusY = 0;
-				var roY = 0 , roX = -10;
-				var timer;
+    <!-- 导航 -->
+    <div class="container tool-nav">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="#">创意工具</a></li>
+            <li role="presentation"><a href="soft.html">系统软件</a></li>
+            <li role="presentation"><a href="office.html">office技巧</a></li>
+        </ul>
+    </div>
 
-				for ( var i=0;i<oImgLength;i++ )
-				{
-					oImg[i].style.transform = 'rotateY('+ i*Deg +'deg) translateZ(350px)';
-					oImg[i].style.transition = 'transform 1s '+ (oImgLength-1-i)*0.1 +'s';
 
-				}
+    <!-- 软件工具明细 -->
+    <div class="container">
+        <!-- 添加标题 常用导航 -->
+        <span class="glyphicon glyphicon-tags" style="margin:15px 0"> 常用导航</span>
+        <div class="row text-center">
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://oa.dingtalk.com/" target="_blank">
+                    <div class="tool-li-li li-bgc-11"><i class="iconfont icon-dingding"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">钉钉后台</div>
+                <div class="text-left text-color-height">数字化新工作平台，让工作更简单</div>
+            </div>
 
-				mTop();
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.liepin.com/" target="_blank">
+                    <div class="tool-li-li li-bgc-48"><i class="iconfont icon-liepin"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">猎聘</div>
+                <div class="text-left text-color-height">中高端求职招聘网站</div>
+            </div>
 
-				window.onresize = mTop;
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.zhaopin.com/" target="_blank">
+                    <div class="tool-li-li li-bgc-40"><i class="iconfont icon-zhaopin"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">智联招聘</div>
+                <div class="text-left text-color-height">上智联，勇往“值钱”</div>
+            </div>
 
-				function mTop(){
-					var wH = document.documentElement.clientHeight;
-					oWrap.style.marginTop = wH / 2 - 180 + 'px';
-				}
-				
-				// 拖拽：三个事件-按下 移动 抬起
-				//按下
-				document.onmousedown = function(ev){
-					ev = ev || window.event;
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.51job.com/" target="_blank">
+                    <div class="tool-li-li li-bgc-31"><i class="iconfont icon-qianchengwuyouFDC"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">前程无忧</div>
+                <div class="text-left text-color-height">好工作尽在全程无忧</div>
+            </div>
 
-					//鼠标按下的时候，给前一点坐标赋值，为了避免第一次相减的时候出错
-					lastX = ev.clientX;
-					lastY = ev.clientY;
-					
-					//移动
-					this.onmousemove = function(ev){
-						ev = ev || window.event;
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.zhipin.com/" target="_blank">
+                    <div class="tool-li-li li-bgc-32"><i class="iconfont icon-BOSS"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">BOSS直聘</div>
+                <div class="text-left text-color-height">找工作，我要和老板谈</div>
+            </div>
 
-						clearInterval( timer );
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.58.com/" target="_blank">
+                    <div class="tool-li-li li-bgc-33"><i class="iconfont icon-581193365easyiconnet"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">58同城</div>
+                <div class="text-left text-color-height">一个神奇的网站</div>
+            </div>
 
-						nowX = ev.clientX; // clientX 鼠标距离页面左边的距离
-						nowY = ev.clientY; // clientY ………………………………顶部………………
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.jd.com/" target="_blank">
+                    <div class="tool-li-li li-bgc-34"><i class="iconfont icon-jingdong-"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">京东</div>
+                <div class="text-left text-color-height">多快好省，只为品质生活</div>
+            </div>
 
-						//当前坐标和前一点坐标差值
-						minusX = nowX - lastX; 
-						minusY = nowY - lastY;
-						
-						//更新wrap的旋转角度，拖拽越快-> minus变化大 -> roY变化大 -> 旋转快
-						roY += minusX*0.2; // roY = roY + minusX*0.2;
-						roX -= minusY*0.1;
-	 
-						oWrap.style.transform = 'rotateX('+ roX +'deg) rotateY('+ roY +'deg)';
-						
-						/*
-						//生成div，让div跟着鼠标动
-						var oDiv = document.createElement('div');
-						oDiv.style.cssText = 'width:5px;height:5px;background:red;position:fixed;left:'+nowX+'px;top:'+nowY+'px';
-						this.body.appendChild(oDiv);
-						*/
-						
-						//前一点的坐标
-						lastX = nowX;
-						lastY = nowY;
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.1688.com/" target="_blank">
+                    <div class="tool-li-li li-bgc-35"><i class="iconfont icon-icon-test1"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">1688</div>
+                <div class="text-left text-color-height">阿里巴巴采购批发网</div>
+            </div>
+        </div>
 
-					}
-					//抬起
-					this.onmouseup = function(){
-						this.onmousemove = null;
-						timer = setInterval(function(){
-							minusX *= 0.95;
-							minusY *= 0.95;
-							roY += minusX*0.2; // roY = roY + minusX*0.2;
-							roX -= minusY*0.1;
-							oWrap.style.transform = 'rotateX('+ roX +'deg) rotateY('+ roY +'deg)';
+        <!-- 添加标题 创意工具 -->
+        <span class="glyphicon glyphicon-tags" style="margin:15px 0"> 创意工具</span>
+        <div class="row text-center">
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://placeholder.com/" target="_blank">
+                    <div class="tool-li-li li-bgc-1"><i class="iconfont icon-zhanweitu"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">占位图</div>
+                <div class="text-left text-color-height">解决开发时设计没有素材的问题</div>
+            </div>
 
-							if ( Math.abs(minusX)<0.1 && Math.abs( minusY )<0.1 )
-							{
-								clearInterval( timer );
-							}
-							console.log( minusX );
-						},13);
-					}
-					return false;
-				}
-			}
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.remove.bg/" target="_blank">
+                    <div class="tool-li-li li-bgc-2"><i class="iconfont icon-qushuiyin"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">在线一键抠图</div>
+                <div class="text-left text-color-height">Remove Background from Image-remove.bg</div>
+            </div>
 
-		</script>
-	</body>
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://uigradients.com" target="_blank">
+                    <div class="tool-li-li li-bgc-3"><i class="iconfont icon-jianbianloading"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">uigradients</div>
+                <div class="text-left text-color-height">色彩渐变配色网站，生而美丽的网站</div>
+            </div>
+
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="http://www.iconfont.cn/" target="_blank">
+                    <div class="tool-li-li li-bgc-4"><i class="iconfont icon-user"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">阿里图标</div>
+                <div class="text-left text-color-height">Iconfont-阿里巴巴矢量图标库</div>
+            </div>
+
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.easyicon.net/" target="_blank">
+                    <div class="tool-li-li li-bgc-5"><i class="iconfont icon-xiongmao"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">easyicon精美图标</div>
+                <div class="text-left text-color-height">搜索607,501个精美图标</div>
+            </div>
+
+        </div>
+
+
+        <!-- 添加标题 头脑风暴 -->
+        <span class="glyphicon glyphicon-tags" style="margin:15px 0"> 头脑风暴</span>
+        <div class="row text-center">
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.xmind.cn/" target="_blank">
+                    <div class="tool-li-li li-bgc-6"><i class="iconfont icon-xmind"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">XMind</div>
+                <div class="text-left text-color-height">高颜值思维导图</div>
+            </div>
+
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.processon.com/" target="_blank">
+                    <div class="tool-li-li li-bgc-7"><i class="iconfont icon-On"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">ProcessOn</div>
+                <div class="text-left text-color-height">ProcessOn 支持流程图、思维导图、组织结构图等</div>
+            </div>
+        </div>
+
+
+
+        <!-- 添加标题 视频剪辑 -->
+        <span class="glyphicon glyphicon-tags" style="margin:15px 0"> 视频剪辑</span>
+        <div class="row text-center">
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="http://www.huishenghuiying.com.cn/" target="_blank">
+                    <div class="tool-li-li li-bgc-8"><i class="iconfont icon-shiting-huishenghuiying"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">会声会影</div>
+                <div class="text-left text-color-height">功能强大的视频编辑软件</div>
+            </div>
+
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.adobe.com/cn/products/premiere/free-trial-download.html" target="_blank">
+                    <div class="tool-li-li li-bgc-9"><i class="iconfont icon-premiere"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">Premiere</div>
+                <div class="text-left text-color-height">一款常用、专业的视频编辑软件</div>
+            </div>
+
+            <div class="col-md-4 col-xs-12 col-sm-6 tool-li">
+                <a href="https://www.ae.com/us/en" target="_blank">
+                    <div class="tool-li-li li-bgc-10"><i class="iconfont icon-ae"></i></div>
+                </a>
+                <div class="text-left" style="margin-top:10px">After effects</div>
+                <div class="text-left text-color-height">功能强大的视频编辑软件</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- 底部通用代码 -->
+    <div class="container footer" style="margin-bottom:15px;">
+        <h5 class="page-header" style="margin-bottom: 10px;">About</h5>
+        <a style="margin-right:15px;" href="https://www.bootcss.com/" target="view_window">Bootstrap</a>
+        <a style="margin-right:15px;" href="https://glyphicons.com/" target="view_window">Glyphicons</a>
+        <a style="margin-right:15px;" href="http://iconfont.cn/" target="view_window">iconfont</a>
+    </div>
+
+    <div class="container footer" style="margin-bottom:15px;">
+        <h5 class="page-header" style="margin-bottom: 10px;">&nbsp;</h5>
+        <a style="margin-left:50rem;" href="https://beian.miit.gov.cn/" target="view_window">蒙ICP备20000077号-1</a>
+    </div>
+
+</body></html>
